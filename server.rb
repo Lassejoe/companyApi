@@ -4,7 +4,7 @@ require "sinatra/namespace"
 require 'mongoid'
 
 # DB Setup
-Mongoid.load! "mongoid.config"
+Mongoid.load! "mongoid.yml"
 
 #Data Models
 class Company
