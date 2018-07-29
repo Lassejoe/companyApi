@@ -72,7 +72,7 @@ namespace '/api/v1' do
     headers 'Access-Control-Allow-Origin' => '*',
             'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']
   end
-
+  #set :protection, false
 
   #generates base_url and parse the request body
   helpers do
@@ -89,6 +89,7 @@ namespace '/api/v1' do
       end
     end
   end
+
 
   #call for a specific companyID
   get '/company/:companyID' do |companyID|

@@ -12,4 +12,12 @@ app.controller('customersCtrl', function($scope, $http) {
 		    console.log("error");
 		});
   }
+  $scope.post = function(value) {
+		$http.post("https://morning-headland-92448.herokuapp.com/api/v1/companies", { 'movie': value }).success(function(result) {
+		    console.log(result);
+		    $scope.resultPost = result;
+		}).error(function() {
+		    console.log("error");
+		});
+	};
 });
