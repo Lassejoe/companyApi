@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Response} from '@angular/http';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent {
     this.getData();
   }
   getData(){
-    return this.http.get(this.apiUrl).map((res: Response) => res.json())
+    return this.http.get(this.apiUrl).pipe(map(res: Response) => res.json())
   }
   getCompanies(){
     this.getData().subcribe(data => {
