@@ -48,7 +48,7 @@ class CompanySerializer
   end
 
   def as_json(*)
-    data = data {
+    data = {
       id:@company.id.to_s,
       companyID:@company.companyID,
       companyName:@company.companyName,
