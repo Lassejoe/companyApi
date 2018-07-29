@@ -16,21 +16,12 @@ export class AppComponent {
     console.log('went into the constructor');
   }
   ngOnInit(): void {
-    this.http.get<CompanyResponse>('https://morning-headland-92448.herokuapp.com/api/v1/companies').subscribe(data => {
+    this.http.get('https://morning-headland-92448.herokuapp.com/api/v1/companies').subscribe(data => {
       this.data = data;
       console.log(data);
 
     });
   }
 
-  interface CompanyResponse{
-    companyID: string;
-    companyName: string;
-    address: string;
-    city: string;
-    country: string;
-    owners: string;
-    email: string;
-    phoneNumber: string;
-  }
+
 }
