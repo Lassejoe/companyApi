@@ -71,7 +71,9 @@ namespace '/api/v1' do
     content_type 'application/json'
     headers 'Access-Control-Allow-Origin' => '*',
             'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST', 'Delete', 'PATCH']
+    set :protection, false
   end
+
   #set :protection, false
 
   #generates base_url and parse the request body
