@@ -70,11 +70,9 @@ namespace '/api/v1' do
   before do
     content_type 'application/json'
     headers 'Access-Control-Allow-Origin' => '*',
-            'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST', 'Delete', 'PATCH']
-    set :protection, false
+            'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST', 'DELETE', 'PATCH']
   end
 
-  #set :protection, false
 
   #generates base_url and parse the request body
   helpers do
@@ -91,7 +89,6 @@ namespace '/api/v1' do
       end
     end
   end
-
 
   #call for a specific companyID
   get '/company/:companyID' do |companyID|
