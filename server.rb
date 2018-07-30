@@ -100,7 +100,7 @@ namespace '/api/v1' do
 
   get '/companies/:companyID' do
     index = params['companyID']
-    company = Company.get(index)
+    company = Company.where(companyID: index).first
     halt(404, {message:'The company you are searching for do not exist'}.to_json) unless company
     CompanySerializer.new(company).to_json
   end
