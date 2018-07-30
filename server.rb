@@ -90,11 +90,6 @@ namespace '/api/v1' do
     end
   end
 
-  delete '/companies/:companyID' do |companyID|
-    company = Company.where(companyID: companyID).first
-    company.destroy if company
-    status 204
-  end
 
   #call for a specific companyID
   get '/companies/:companyID' do |companyID|
@@ -135,6 +130,12 @@ namespace '/api/v1' do
     end
   end
 
-
+  delete '/companies/:companyID' do |companyID|
+    company = Company.where(companyID: companyID).first
+    company.destroy if company
+    status 204
+  else
+    status 500
+  end
 end
 #Endpoint
