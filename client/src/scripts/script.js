@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-app.controller('customersCtrl', function($scope, $http) {
+app.controller('companyCtrl', function($scope, $http) {
   $http.get("https://morning-headland-92448.herokuapp.com/api/v1/companies").then(function (response) {
       $scope.companies = response.data;
           console.log(response);
