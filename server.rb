@@ -2,9 +2,18 @@
 require 'sinatra'
 require "sinatra/namespace"
 require 'mongoid'
-
+require 'rack'
+require 'rack/cors'
 # DB Setup
 Mongoid.load! "mongoid.yml"
+
+
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :options]
+  end
+end
 
 #Data Models
 class Company
