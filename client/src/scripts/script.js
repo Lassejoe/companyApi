@@ -7,25 +7,20 @@ app.controller('companyCtrl', function($scope, $http) {
   $scope.DeleteData = function (index) {
     $scope.id = $scope.companies[index].companyID;
     var deleteUrl = 'https://morning-headland-92448.herokuapp.com/api/v1/companies/' + $scope.id;
-    try {
-      $http.delete(deleteUrl)
-     .then(
-         function(response){
-           // success callback
-         },
-         function(response){
-           // failure call back
-           console.log(response.status);
-         }
-      );
-    } catch (e) {
-
-    } finally {
-
+    var del = {
+      method: 'DELETE',
+      url: deleteUrl,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }
-
-
+    $http(del).then(function(response){
+      console.log(response);
+    },function(errorResponse){
+      console.log(errorResponse);
+    });
   };
+
   $scope.post = function(value) {
 		$http.post("https://morning-headland-92448.herokuapp.com/api/v1/companies", { 'movie': value }).success(function(result) {
 		    console.log(result);
