@@ -130,8 +130,9 @@ namespace '/api/v1' do
     end
   end
 
-  delete '/companies/:companyID' do |companyID|
-    company = Company.where(companyID: companyID).first
+  delete '/companies/:companyID' do
+    tempCompanyID = params['companyID']
+    company = Company.where(companyID: tempCompanyID).first
     company.destroy if company
     status 204
   else

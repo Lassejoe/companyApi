@@ -6,7 +6,7 @@ app.controller('companyCtrl', function($scope, $http) {
   });
   $scope.DeleteData = function (index) {
     $scope.id = $scope.companies[index].companyID;
-    var deleteUrl = 'https://morning-headland-92448.herokuapp.com/api/v1/companies/' + $scope.id;
+    var deleteUrl = 'https://morning-headland-92448.herokuapp.com/api/v1/companies/' + $scope.id + ".html";
     try {
       $http.delete(deleteUrl)
      .then(
