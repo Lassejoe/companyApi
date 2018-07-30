@@ -69,7 +69,6 @@ end
 namespace '/api/v1' do
   before do
     register Sinatra::Cors
-    set :allow_methods, "GET,HEAD,POST,DELETE"
     content_type 'application/json'
     headers 'Access-Control-Allow-Origin' => '*',
             'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST', 'DELETE', 'PATCH']
