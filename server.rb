@@ -70,7 +70,7 @@ namespace '/api/v1' do
   before do
     content_type 'application/json'
     headers 'Access-Control-Allow-Origin' => '*',
-            'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST', 'DELETE', 'PATCH']
+            'Access-Control-Allow-Methods' => ['GET', 'POST', 'DELETE', 'PATCH']
   end
   #set :protection, false
 
@@ -137,7 +137,7 @@ namespace '/api/v1' do
     end
   end
 
-  delete '/deleteCompanies/:companyID' do
+  delete '/companies/:companyID' do
     tempCompanyID = params['companyID']
     company = Company.where(companyID: tempCompanyID).first
     company.destroy
