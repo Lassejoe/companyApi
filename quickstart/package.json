@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
-    "postinstall": "ng build --aot -prod",
     "build": "tsc -p src/",
     "build:watch": "tsc -p src/ -w",
     "build:e2e": "tsc -p e2e/",
@@ -25,7 +24,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@angular/cli": "1.2.3",
     "@angular/common": "~4.3.4",
     "@angular/compiler": "~4.3.4",
     "@angular/core": "~4.3.4",
