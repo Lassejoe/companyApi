@@ -92,7 +92,7 @@ namespace '/api/v1' do
 
 
   #call for a specific companyID
-  get '/company/:companyID' do |companyID|
+  get '/companies/:companyID' do |companyID|
     company = Company.where(companyID: companyID).first
     halt(404, {message:'The company you are searching for do not exist'}.to_json) unless company
     CompanySerializer.new(company).to_json
@@ -119,7 +119,7 @@ namespace '/api/v1' do
     end
   end
   #updates the specific company and the client can update a specific field
-  patch '/company/:companyID' do |companyID|
+  patch '/companies/:companyID' do |companyID|
     company = Company.whre(companyID: companyID).first
     halt(404, {message:'The company you are searching for do not exist'}.to_json) unless company
     if company.update_attributes(json_params)
@@ -130,7 +130,7 @@ namespace '/api/v1' do
     end
   end
 
-  delete '/company/:companyID' do |companyID|
+  delete '/companies/:companyID' do |companyID|
     company = Company.where(companyID: companyID).first
     company.destroy if company
     status 204

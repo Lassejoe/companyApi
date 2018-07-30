@@ -5,7 +5,7 @@ app.controller('customersCtrl', function($scope, $http) {
       console.log(response);
   });
   $scope.Delete = function(index){
-    $http.delete("https://morning-headland-92448.herokuapp.com/api/v1/companany/companyID", { 'companyID': index }).success(function(result) {
+    $http.delete("https://morning-headland-92448.herokuapp.com/api/v1/companany/12121", { 'companyID': index }).success(function(result) {
 		    console.log(result);
 		    $scope.resultDelete = result;
 		}).error(function() {
