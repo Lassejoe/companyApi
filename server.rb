@@ -138,6 +138,7 @@ namespace '/api/v1' do
   end
 
   delete '/companies/:companyID' do
+    response.headers['Location'] = "deleted"
     tempCompanyID = params['companyID']
     company = Company.where(companyID: tempCompanyID).first
     company.destroy
