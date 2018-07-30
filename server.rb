@@ -137,10 +137,10 @@ namespace '/api/v1' do
     end
   end
 
-  delete '/companies/:companyID' do
+  delete '/deleteCompanies/:companyID' do
     tempCompanyID = params['companyID']
     company = Company.where(companyID: tempCompanyID).first
-    company.destroy
+    Company.company.destroy
   end
 end
 #Endpoint
