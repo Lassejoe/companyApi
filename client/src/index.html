@@ -20,14 +20,14 @@
             <th>Owners</th>
             <th></th>
           </thead>
-          <tr ng-repeat="x in myData">
-            <td>{{x.companyID}}</td>
-            <td>{{x.companyName}}</td>
-            <td>{{x.address}}</td>
-            <td>{{x.city}}</td>
-            <td>{{x.country}}</td>
-            <td>{{x.owners}}</td>
-            <td><button class="btn" ng-click="Delete($companyID)">Delete</button></td>
+          <tr ng-repeat="company in companies">
+            <td>{{company.companyID}}</td>
+            <td>{{company.companyName}}</td>
+            <td>{{company.address}}</td>
+            <td>{{company.city}}</td>
+            <td>{{company.country}}</td>
+            <td>{{company.owners}}</td>
+            <td><button class="btn" ng-click="DeleteData($index)">Delete</button></td>
           </tr>
         </table>
       </div>

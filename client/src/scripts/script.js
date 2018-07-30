@@ -1,17 +1,31 @@
 var app = angular.module('myApp', []);
 app.controller('customersCtrl', function($scope, $http) {
   $http.get("https://morning-headland-92448.herokuapp.com/api/v1/companies").then(function (response) {
-      $scope.myData = response.data;
-      console.log(response);
+      $scope.companies = response.data;
+          console.log(response);
   });
-  $scope.Delete = function(index){
-    $http.delete("https://morning-headland-92448.herokuapp.com/api/v1/companany/12121", { 'companyID': index }).success(function(result) {
-		    console.log(result);
-		    $scope.resultDelete = result;
-		}).error(function() {
-		    console.log("error");
-		});
-  }
+  $scope.DeleteData = function (index) {
+    $scope.id = $scope.companies[index].companyID;
+    var deleteUrl = 'https://morning-headland-92448.herokuapp.com/api/v1/companies/' + $scope.id;
+    try {
+      $http.delete(deleteUrl)
+     .then(
+         function(response){
+           // success callback
+         },
+         function(response){
+           // failure call back
+           console.log(response.status);
+         }
+      );
+    } catch (e) {
+
+    } finally {
+
+    }
+
+
+  };
   $scope.post = function(value) {
 		$http.post("https://morning-headland-92448.herokuapp.com/api/v1/companies", { 'movie': value }).success(function(result) {
 		    console.log(result);
