@@ -44,6 +44,35 @@ app.controller('companyCtrl',function($scope,  $http, $window) {
         });
 
 	};
+
+  $scope.UpdateData = function() {
+
+    var tempCompanyID = $scope.companyID;
+    var tempCompanyName = $scope.companyName;
+    var tempAddress = $scope.address;
+    var tempCity = $scope.city;
+    var tempCountry = $scope.country;
+    var tempOwners = $scope.owners;
+    var tempPhoneNumber = $scope.phoneNumber;
+    var tempEmail = $scope.email;
+
+    var params = JSON.stringify({companyID: tempCompanyID, companyName: tempCompanyName, address: tempAddress, city: tempCity, country: tempCountry, owners: tempOwners, phoneNumber: tempPhoneNumber, email: tempEmail});
+
+    var patchURL = 'https://morning-headland-92448.herokuapp.com/api/v1/companies/'+tempCompanyID;
+    console.log(patchURL);
+    $http.patch(patchURL, params
+        ).then(function(response){
+          console.log(response);
+          $scope.Refresh();
+        },function(errorResponse){
+          console.log(errorResponse);
+
+          //$scope.Alert();
+        });
+
+	};
+
+
   $scope.InsertTextIntoInputFields = function(index){
 
     $scope.idOfCompany = $scope.companies[index].companyID;

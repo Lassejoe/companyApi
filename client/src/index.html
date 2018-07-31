@@ -48,7 +48,7 @@
               <form>
                 <div class="form-group">
                   <label for="companyID">Company ID</label>
-                  <input placeholder="CompanyID can't start with the number zero" type="number" class="form-control" id="companyID" ng-model="companyID" required title="Insert your company ID/number">
+                  <input placeholder="CompanyID can't start with the number zero" type="number" class="form-control" id="companyID" ng-model="companyID" min="1" max="99999" title="Insert your company ID/number" required>
                 </div>
                 <div class="form-group">
                   <label for="companyName">Company Name</label>
@@ -84,7 +84,7 @@
               </form>
               <br>
 
-                <button class="btn" ng-click="ClearInputFields()">Update the company</button>
+                <button class="btn" ng-click="UpdateData()">Update the company</button>
                 <button class="btn" ng-click="ClearInputFields()">Reset</button>
             </div>
       </div>

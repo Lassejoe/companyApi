@@ -136,7 +136,7 @@ namespace '/api/v1' do
   end
   #updates the specific company and the client can update a specific field
   patch '/companies/:companyID' do |companyID|
-    company = Company.whre(companyID: companyID).first
+    company = Company.where(companyID: companyID).first
     halt(404, {message:'The company you are searching for do not exist'}.to_json) unless company
     if company.update_attributes(json_params)
       CompanySerializer.new(company).to_json
