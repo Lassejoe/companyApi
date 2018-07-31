@@ -16,14 +16,11 @@ app.controller('companyCtrl',function($scope,  $http, $window) {
   };
 
   $scope.Refresh = function (){
-    $http.get("https://morning-headland-92448.herokuapp.com/api/v1/companies").then(function (response) {
-        $scope.companies = response.data;
-        console.log(response);
-  });
+    location.reload();
 }
 
-  $scope.PostData = function(ev) {
-    var postURL = 'https://morning-headland-92448.herokuapp.com/api/v1/companies';
+  $scope.PostData = function() {
+
     var tempCompanyID = $scope.companyID;
     var tempCompanyName = $scope.companyName;
     var tempAddress = $scope.address;
@@ -32,37 +29,58 @@ app.controller('companyCtrl',function($scope,  $http, $window) {
     var tempOwners = $scope.owners;
     var tempPhoneNumber = $scope.phoneNumber;
     var tempEmail = $scope.email;
-    var params = JSON.stringify({companyID: tempCompanyID, companyName: tempCompanyName, address: tempAddress, city: tempCity, country: "tempCountry", owners: "tempOwners", phoneNumber: "tempPhoneNumber", email: "tempEmail"});
-    console.log(params);
+    console.log(tempEmail);
+    var params = JSON.stringify({companyID: tempCompanyID, companyName: tempCompanyName, address: tempAddress, city: tempCity, country: tempCountry, owners: tempOwners, phoneNumber: tempPhoneNumber, email: tempEmail});
+
+    var postURL = 'https://morning-headland-92448.herokuapp.com/api/v1/companies';
     $http.post(postURL, params
         ).then(function(response){
           console.log(response);
           $scope.Refresh();
         },function(errorResponse){
           console.log(errorResponse);
-          $scope.showAlert(ev);
+
           //$scope.Alert();
         });
+
 	};
+  $scope.InsertTextIntoInputFields = function(index){
+
+    $scope.idOfCompany = $scope.companies[index].companyID;
+    $scope.nameOfCompany = $scope.companies[index].companyName;
+    $scope.addressOfCompany = $scope.companies[index].address;
+    $scope.cityOfCompany = $scope.companies[index].city;
+    $scope.countryOfCompany = $scope.companies[index].country;
+    $scope.ownersOfCompany = $scope.companies[index].owners;
+    $scope.phoneNumberOfCompany = $scope.companies[index].phoneNumber;
+    $scope.emailOfCompany = $scope.companies[index].email;
+
+    $scope.companyID = Number($scope.idOfCompany);
+    $scope.companyName = ($scope.nameOfCompany);
+    $scope.address = ($scope.addressOfCompany);
+    $scope.city = ($scope.cityOfCompany);
+    $scope.country = ($scope.countryOfCompany);
+    $scope.owners = ($scope.ownersOfCompany);
+    $scope.phoneNumber = Number($scope.phoneNumberOfCompany);
+    $scope.email = ($scope.emailOfCompany);
+
+  }
+
+  $scope.ClearInputFields = function(){
+    $scope.companyID = Number('');
+    $scope.companyName = "";
+    $scope.address = "";
+    $scope.city = "";
+    $scope.country = "";
+    $scope.owners = "";
+    $scope.phoneNumber = Number();
+    $scope.email = "";
+  }
 
   $scope.Alert = function(){
     $window.alert("something");
   };
-  $scope.showAlert = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    // Modal dialogs should fully cover application
-    // to prevent interaction outside of dialog
-    $mdDialog.show(
-      $mdDialog.alert()
-        .parent(angular.element(document.querySelector('#popupContainer')))
-        .clickOutsideToClose(true)
-        .title('This is an alert title')
-        .textContent('You can specify some description text in here.')
-        .ariaLabel('Alert Dialog Demo')
-        .ok('Got it!')
-        .targetEvent(ev)
-    );
-  };
+
 });
 
 function myFunction() {
