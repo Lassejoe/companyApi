@@ -96,7 +96,7 @@ app.controller('companyCtrl',function($scope,  $http, $window) {
   }
 
   $scope.ClearInputFields = function(){
-    $scope.companyID = Number('');
+    $scope.companyID = "";
     $scope.companyName = "";
     $scope.address = "";
     $scope.city = "";
