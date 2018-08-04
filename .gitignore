@@ -34,6 +34,7 @@ build-iPhoneSimulator/
 /_yardoc/
 /doc/
 /rdoc/
+/clientSide/scripts/testscript.js
 
 ## Environment normalization:
 /.bundle/
